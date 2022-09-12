@@ -1,0 +1,39 @@
+<section class="container ">
+  <div class="row pt-3">
+    <div class="col-12">
+      <h2>Create New Post</h2>
+      <hr />
+      <form class="new-post-form">
+        <div class="col-6 form-group">
+          <label for="post-title" class="font-weight-bold">Title</label>
+          <input class="form-control" type="text" id="post-title" name="post-title" />
+        </div>
+        <div class="col-12 form-group">
+          <label for="content" class="font-weight-bold">Content</label>
+          <input type="hidden" id="content" name="content"></input>
+          <trix-editor class="trix-content" input="content"></trix-editor>
+        </div>
+        <div class="col-3 form-group">
+          <button type="submit" class="btn">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<hr />
+
+{{#if posts.length}}
+<section class="container">
+  <h2 class="mb-3">Your Posts</h2>
+  <ul>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post truncate='truncate'}}
+      <a class="text-primary" href="/dashboard/edit/{{post.id}}">Edit post</a>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
+<script src="/js/add-post.js"></script>
