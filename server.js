@@ -1,3 +1,5 @@
+const path = require('path');
+const exphbs = require('express-handlebars');
 const express = require('express');
 const session = require('express-session');
 const app = express();
@@ -16,8 +18,9 @@ const sess = {
   })
 };
 
-app.use(session(sess));
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
