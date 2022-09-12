@@ -1,0 +1,7 @@
+<ul class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    {{> post-info post truncate='truncate'}}
+  </li>
+  {{/each}}
+</ul>

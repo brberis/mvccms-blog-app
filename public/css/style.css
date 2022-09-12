@@ -37,6 +37,20 @@ p {
   font-size: 1.2rem;
 }
 
+.truncate {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+
+a {
+  color: #fff;
+}
+
 main {
   margin: 20px auto;
   width: 94%;
@@ -93,10 +107,15 @@ main {
 }
 
 .hero {
-  padding: 3% 4%;
+  padding:2% 4%;
   background-color: var(--dark);
   color: var(--primary);
 }
+
+.navbar {
+  font-size: large;
+  padding: 0 0 20px;
+  }
 
 .hero p {
   max-width: 75%;
