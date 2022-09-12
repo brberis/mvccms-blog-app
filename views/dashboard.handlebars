@@ -24,12 +24,12 @@
 
 {{#if posts.length}}
 <section class="container">
-  <h2 class="mb-3">Your Posts</h2>
+  <h2 class="mt-5 mb-5">Your Posts</h2>
   <ul>
     {{#each posts as |post|}}
-    <li>
+    <li class="mb-5">
       {{> post-info post truncate='truncate'}}
-      <a class="text-primary" href="/dashboard/edit/{{post.id}}">Edit post</a>
+      <a class="text-primary" href="/dashboard/edit/{{post.id}}">Edit Post</a>
     </li>
     {{/each}}
   </ul>

@@ -5,6 +5,9 @@ const withAuth = require('../../utils/auth');
 // get all posts
 router.get('/', (req, res) => {
   Post.findAll({
+    order: [
+      ['id', 'DESC']
+    ],
     attributes: [
       'id',
       'title',
@@ -88,7 +91,8 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
-      title: req.body.title
+      title: req.body.title,
+      content: req.body.content
     },
     {
       where: {
