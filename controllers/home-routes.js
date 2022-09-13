@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment, Vote } = require('../models');
+const sequelize = require('../config/connection');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
@@ -78,7 +79,9 @@ router.get('/post/:id', (req, res) => {
 
       res.render('single-post', {
         post,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        loggedUser: req.session.username,
+
       });
     })
     .catch(err => {

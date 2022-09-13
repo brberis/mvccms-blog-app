@@ -2,11 +2,17 @@
   {{#each this}}
   <section class="comment p-3 bg-comment">
     <div class="meta">
-      {{user.username}} on {{format_date created_at}}
+      <span class="font-weight-bold">{{user.username}}</span>  on {{format_date created_at}}
     </div>
     <div class="text">
       {{comment_text}}
     </div>
+    {{#if (comment_owner ../loggedUser user.username)}}
+    <div>
+      <span><a class="text-primary" href="/comment/delete">Delete</a></span> / <span><a class="text-primary" href="/comment/edit">Edit</a></span>
+    </div>
+    {{/if}}
   </section>
   {{/each}}
 </div>
+

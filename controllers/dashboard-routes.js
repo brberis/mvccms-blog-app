@@ -21,7 +21,8 @@ router.get('/', withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'
+      ],
         include: {
           model: User,
           attributes: ['username']
@@ -43,6 +44,40 @@ router.get('/', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get('/comment/edit/:id', withAuth, (req, res) => {
+  Comment.findOne({
+    where: {
+      id: req.params.id,
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'comment_text',
+      'post_id',
+      'created_at',
+    ],
+    include: {
+      model: User,
+      attributes: ['username']
+    }
+  })
+    .then(dbCommentData => {
+      if (dbCommentData) {
+        const comment = dbCommentData.get({ plain: true });
+        res.render('edit-comment', {
+          comment,
+          loggedIn: true
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 
 router.get('/edit/:id', withAuth, (req, res) => {
   Post.findOne({
@@ -134,5 +169,7 @@ router.get('/my-post/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
 
 module.exports = router;

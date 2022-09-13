@@ -15,5 +15,10 @@ module.exports = {
   },
   truncate_html: (str, len) => {
     return clip(str, 200, { html: true, maxLines: 2 });
+  },
+  comment_owner: (commentUsername, username) => {
+    if (commentUsername === username) {
+      return true
+    }
   }
 };
