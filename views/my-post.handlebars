@@ -1,7 +1,8 @@
 <section class="container ">
   <div class="row pt-0">
     <a class="text-primary" href="/"> Home</a>
-    <a class="text-primary" href="#"> &nbsp;/ Post</a>
+    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
+    <a class="text-primary" href="#"> &nbsp;/ My Post</a>
     <div class="col-12 mt-2">
       <article class="post">
         <div class="title">
@@ -15,6 +16,14 @@
           by <span class="font-weight-bold">{{post.user.username}}</span> on {{format_date post.created_at}}
           |
           <a href="/post/{{post.id}}" class="text-primary">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+        </div>
+        <div class="form-inline justify-content-end">
+          <div class="col-2">
+            <button type="button" class="delete-post-btn btn btn-sm">Delete post</button>
+          </div>
+          <div class="col-2">
+            <button type="submit" class="edit-post-form btn btn-sm" onclick="location.href='/dashboard/edit/{{post.id}}';">Edit post</button>
+          </div>
         </div>
       </article>
       <hr />
@@ -59,6 +68,7 @@
 </section>
 {{/if}}
 {{#if loggedIn}}
-
+<script src="/js/edit-post.js"></script>
+<script src="/js/delete-post.js"></script>
 <script src="/js/comment.js"></script>
 {{/if}}

@@ -1,3 +1,5 @@
+const session = require("express-session");
+
 const clip = require("text-clipper").default;
 module.exports = {
   format_date: date => {
@@ -9,11 +11,9 @@ module.exports = {
     if (amount !== 1) {
       return `${word}s`;
     }
-
     return word;
   },
   truncate_html: (str, len) => {
     return clip(str, 200, { html: true, maxLines: 2 });
-   
   }
 };

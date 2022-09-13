@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
-  console.log(req.session);
   Post.findAll({
     where: {
       user_id: req.session.user_id
@@ -36,7 +35,8 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('dashboard', { posts, loggedIn: true });
+      res.render('dashboard', { posts, loggedIn: true, username: req.session.user_id 
+      });
     })
     .catch(err => {
       console.log(err);
@@ -45,7 +45,11 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findByPk(req.params.id, {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+      user_id: req.session.user_id
+    },
     attributes: [
       'id',
       'title',
@@ -80,6 +84,53 @@ router.get('/edit/:id', withAuth, (req, res) => {
       }
     })
     .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
+router.get('/my-post/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'content',
+      'title',
+      'created_at',
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+
+      const post = dbPostData.get({ plain: true });
+
+      res.render('my-post', {
+        post,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username 
+      });
+    })
+    .catch(err => {
+      console.log(err);
       res.status(500).json(err);
     });
 });

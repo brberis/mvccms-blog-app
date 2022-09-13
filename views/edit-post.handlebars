@@ -1,13 +1,16 @@
 <section class="container ">
   <div class="row pt-3">
-    <div class="col-12">
-      <a href="/dashboard"> &larr; Back to dashboard</a>
-      <h2>
+    <a class="text-primary" href="/"> Home</a>
+    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
+    <a class="text-primary" href="#"> &nbsp;/ Edit</a>
+    <div class="col-12 mt-2">
+      <h2 class="mt-2 mb-3">
         Edit Post
       </h2>
       <form class="edit-post-form">
-        <div class="col-6 form-group">
-          <input name="post-title" type="text" value="{{post.title}}" />
+        <div class="col-12 form-group">        
+        <label for="post-title" class="font-weight-bold">Title</label>
+          <input class="form-control" name="post-title" type="text" value="{{post.title}}" />
         </div>
         <div class="col-12 form-group">
           <label for="content" class="font-weight-bold">Content</label>
@@ -34,17 +37,28 @@
   </div>
 </section>
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      <form class="comment-form">
+        <div class="col-9 form-group">
+          <textarea class="form-control"  name="comment-body"></textarea>
+        </div>
 
-  <div>
-    <button type="submit">Add Comment</button>
+        <div class="col-3 form-group">
+          <button class="comment-form btn" type="submit">Add Comment</button>
+        </div>
+      </form>
+    </div>
   </div>
-</form>
-
-{{> comments post.comments}}
+</section>
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      {{> comments post.comments}}
+    </div>
+  </div>
+</section>
 
 <script src="/js/edit-post.js"></script>
 <script src="/js/delete-post.js"></script>

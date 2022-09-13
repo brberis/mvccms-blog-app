@@ -12,37 +12,39 @@
 </head>
 
 <body class="flex-column min-100-vh">
-    <header class="hero">
-      <nav class="navbar navbar-expand-lg justify-content-between">
-        <div class="navbar-nav">
-          <a class="navbar-brand" href="#">
-            <h1 class="app-title">Tech Blog</h1>
-          </a>
-        </div>
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/">Home</a>
-          {{#if loggedIn}}
-          <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-          <button id="logout" class="btn-no-style">Logout</button>
-          {{else}}
-          <a class="nav-item nav-link" href="/login">Login</a>
-          <a class="nav-item nav-link" href="/register">Register</a>
-          {{/if}}
-        </div>
-      </nav>
-    </header>
+  <header class="hero">
+    <nav class="navbar navbar-expand-lg justify-content-between">
+      <div class="navbar-nav">
+        <a class="navbar-brand" href="#">
+          <h1 class="app-title">Tech Blog</h1>
+        </a>
+      </div>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/">Home</a>
+        {{#if loggedIn}}
+        <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/signup">Sign-up</a>
+        {{/if}}
+      </div>
+    </nav>
+  </header>
 
-    <main class="flex-row justify-space-between">
-      {{{ body }}}
-    </main>
-    <footer>
-      Tech Blog
-    </footer>
-  </div>
-  
+  <main class="flex-row justify-space-between">
+    {{{ body }}}
+  </main>
+  <!-- Footer -->
+  <footer id="footer" class="bg-dark text-center text-white">
+    <div class="container p-4">      
+      <p>Tech Blog</p>
+    </div>
+  </footer>
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"></script>  
 </body>
-
 </html>
