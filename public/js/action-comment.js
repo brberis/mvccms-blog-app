@@ -11,6 +11,7 @@ if(ed){
   editComment(commentId)
 }
 
+// delete comment handler
 async function deleteComment(id) {
   const response = await fetch(`/api/comments/${id}`, {
     method: 'DELETE'
@@ -24,21 +25,22 @@ async function deleteComment(id) {
   }
 }
 
+// edit comment handler
 async function editComment(id) {
 
-  // const response = await fetch(`/api/comment/${id}`, {
-  //   method: 'PUT',
-  //   body: JSON.stringify({
-  //     comment_text: commentText,
-  //   }),
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }
-  // });
+  const response = await fetch(`/api/comment/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      comment_text: commentText,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
 
-  // if (response.ok) {
-  //   document.location.replace('/dashboard/my-blog/'+blogId);
-  // } else {
-  //   alert(response.statusText);
-  // }
+  if (response.ok) {
+    document.location.replace('/dashboard/my-blog/'+blogId);
+  } else {
+    alert(response.statusText);
+  }
 }

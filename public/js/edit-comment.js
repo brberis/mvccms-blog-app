@@ -1,3 +1,4 @@
+// edit comment handler
 async function editFormHandler(event) {
   event.preventDefault();
 

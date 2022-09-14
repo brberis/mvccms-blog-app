@@ -36,6 +36,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get post by id
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -75,6 +76,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// create posts
 router.post('/', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
@@ -113,6 +115,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+// delete post
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({

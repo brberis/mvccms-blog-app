@@ -1,3 +1,4 @@
+// add post handler
 async function newFormHandler(event) {
   event.preventDefault();
 

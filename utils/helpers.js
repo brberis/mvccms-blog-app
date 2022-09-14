@@ -13,6 +13,7 @@ module.exports = {
     }
     return word;
   },
+  // truncate post text 
   truncate_html: (str, len) => {
     return clip(str, 200, { html: true, maxLines: 2 });
   },

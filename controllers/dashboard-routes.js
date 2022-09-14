@@ -45,6 +45,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+// get comment to edit
 router.get('/comment/edit/:id', withAuth, (req, res) => {
   Comment.findOne({
     where: {
@@ -78,7 +79,7 @@ router.get('/comment/edit/:id', withAuth, (req, res) => {
     });
 });
 
-
+// get posts to edit
 router.get('/edit/:id', withAuth, (req, res) => {
   Post.findOne({
     where: {
@@ -123,6 +124,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+// get personal post
 router.get('/my-post/:id', (req, res) => {
   Post.findOne({
     where: {

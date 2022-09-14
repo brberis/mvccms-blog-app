@@ -1,3 +1,4 @@
+/* init */
 :root {
   --primary: #ccdad1;
   --secondary: #9caea9;
@@ -38,6 +39,7 @@ p {
   font-size: 1.2rem;
 }
 
+/* truncate post text */
 .truncate {
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -59,7 +61,8 @@ main {
 
 }
 
- .btn {
+/* button style */
+.btn {
   font-size: 1.3rem;
   text-decoration:none;
   padding: 6px 5px;
@@ -123,6 +126,7 @@ main {
   color: var(--primary);
 }
 
+/* nav bar */
 .navbar {
   font-size: large;
   padding: 0 0 20px;
@@ -175,24 +179,6 @@ main {
   color: rgb(29, 153, 255);
 }
 
-/* CARDS */
-.card {
-  margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
-  border-radius: var(--border-radius);
-}
-
-.card-header {
-  color: var(--primary);
-  background-color: var(--dark);
-  padding: 2.5%;
-  border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-}
-
-.card-body {
-  padding: 2.5%;
-}
-
 /* forms */
 .form-label,
 .form-input,
@@ -223,6 +209,7 @@ main {
   background-color: #e0ebe4;
 }
 
+/* footer */
 #footer {
   position: relative;
   bottom: 0;

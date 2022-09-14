@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// create comment
 router.post('/', withAuth, (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
@@ -25,6 +26,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+// edit comment
 router.put('/:id', withAuth, (req, res) => {
   Comment.update(
     {
@@ -50,6 +52,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+// delete comments
 router.delete('/:id', withAuth, (req, res) => {
   Comment.destroy({
     where: {
