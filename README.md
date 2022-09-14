@@ -17,10 +17,26 @@ The front-end is despatched by Handlebars. And it use Restful paradigm to commun
 
 ## Features
 
-- Rich Text Editor (Trix)
+- Rich Text Editor
 - Support posts with HTML
 - User password encryption
 - User sessions (Express Session)
+
+## Dependencies and Technology
+
+- bCrypt
+- Connect Session Sequelize
+- Dotenv
+- ExpressJs
+- Express Handlebars
+- Express Session
+- Mysql2
+- Sequelize
+- Trix
+
+## Live Demo
+
+Live demo site [here](https://mvccms-blog-app.herokuapp.com).
 
 ## Questions
 
