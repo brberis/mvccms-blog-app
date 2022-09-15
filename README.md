@@ -18,6 +18,7 @@ The front-end is despatched by Handlebars. And it use Restful paradigm to commun
 ## Features
 
 - Rich Text Editor
+- Session expiration (Set to 1 hour)
 - Support posts with HTML
 - User password encryption
 - User sessions (Express Session)

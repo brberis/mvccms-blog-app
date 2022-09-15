@@ -14,14 +14,15 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // session object
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    maxAge: 1000 * 60 * 60 // the session wil expire after 1 hour
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize
   })
 };
-
 const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
